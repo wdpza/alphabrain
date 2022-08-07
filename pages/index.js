@@ -8,7 +8,7 @@ export default function Home({posts}) {
     <>
       <Head>
         <title>AlphaBrain</title>
-        <meta name="description" content="Maybe someday someone somewhere, will see..." />
+        <meta name="description" content="Of all the things I've lost I miss my mind the most!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

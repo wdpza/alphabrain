@@ -62,8 +62,8 @@ function Hero() {
             <span className='text-primary dark:text-dark-secondary-500'>Alpha</span>Brain
           </h1>
 
-          <p className="text-2xl mb-8">
-            Maybe someday, someone, somewhere, will see...
+          <p className="text-4xl mb-8">
+            Of all the things I've lost I miss my mind the most!
           </p>
         </div>
       </div>
