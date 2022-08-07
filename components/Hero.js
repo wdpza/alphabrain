@@ -1,6 +1,14 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from '../tailwind.config.js'
+import { themeChange } from 'theme-change'
+
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useSpring, animated, easings } from 'react-spring'
+
+import { BsFillSquareFill } from 'react-icons/bs'
+
+const fullConfig = resolveConfig(tailwindConfig)
 
 function Box(props) {
   // This reference will give us direct access to the mesh
@@ -27,17 +35,38 @@ function Box(props) {
 
 
 function EasingComponent() {
+  const { light, dark, cupcake, dracula } = fullConfig.theme.colors
+
+  const [html, setHtml] = useState(undefined)
+  const [theme, setTheme] = useState(undefined)
+
+  useEffect(() => {
+    if(!html) {
+      let html = document.querySelector('html')
+      let theme = html.dataset.theme
+      if(html && theme) {
+        setHtml(html)
+        setTheme(fullConfig.theme.colors[theme])
+      }
+    }
+  }, [])
+
+  const primary = theme ? theme.primary : '#570df8'
+  const secondary = theme ? theme.secondary : '#f000b8'
+  const accent = theme ? theme.accent : '#ffffff'
+  const neutral = theme ? theme.neutral : '#333333'
+
   const { background, rotateZ } = useSpring({
     from: {
-      background: '#46e891',
-      rotateZ: 0,
+      background: accent,
+      rotateZ: 45,
     },
     to: {
-      background: '#277ef4',
+      background: secondary,
       rotateZ: 225,
     },
     config: {
-      duration: 2000,
+      duration: 1500,
       easing: easings.easeInOutQuart,
     },
     loop: { reverse: true },
@@ -45,30 +74,34 @@ function EasingComponent() {
 
   return (
     <animated.div
-      style={{ background, width: 90, height: 90, borderRadius: 16, rotateZ }}
+      style={{ background, width: 65, height: 65, borderRadius: 16, rotateZ, marginTop: 14 }}
     />
   )
 }
 
-function Hero() {
+export default function Hero({posts}) {
   return (
     <>
-      <div className="z-10 hero-wrapper pb-20" style={{
-        height: '50vh',
-      }}>
+      <div className="z-10 hero-wrapper pb-20">
         <div className="container hero-content mx-auto flex-col">
           <EasingComponent />
-          <h1 className='text-8xl font-black mb-5'>
-            <span className='text-primary dark:text-dark-secondary-500'>Alpha</span>Brain
+          <h1 className='text-6xl font-black mt-16 mb-12 antialiased'>
+            <span className='text-primary dark:text-dark-secondary-500 mt-10'>Alpha</span>Brain
           </h1>
 
-          <p className="text-4xl mb-8">
-            Of all the things I've lost I miss my mind the most!
+          <p className="text-2xl font-semibold mb-0s">
           </p>
+
+          <span className='text-2xl font-normal mb-0s'>M</span>
+
+          <div className="flex flex-row justify-center items-center">
+            <div className="text-primary text-1xl p-3"><BsFillSquareFill /></div>
+            <div className="text-secondary text-1xl p-3"><BsFillSquareFill /></div>
+            <div className="text-accent text-1xl p-3"><BsFillSquareFill /></div>
+            <div className="text-neutral text-1xl p-3"><BsFillSquareFill /></div>
+          </div>
         </div>
       </div>
     </>
   )
 }
-
-export default Hero

@@ -12,11 +12,11 @@ class MyDocument extends Document {
             width: '100%',
           }}>
             <FaCircle
-              className="h-screen absolute text-base-300 top-0"
+              className="absolute text-base-300 top-0"
               style={{
-                marginTop: '-100rem',
-                width: '150%',
-                height: '150%'
+                marginTop: '-1888px',
+                width: '2080px',
+                height: '2080px'
               }} />
           </div>
           <Main />

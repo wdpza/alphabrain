@@ -15,7 +15,7 @@ const NavBar = () => {
   const themeValues = [
     {
       name: 'light',
-      iconColor: '#37cdbe'
+      iconColor: '#570df8'
     },
     {
       name: 'dark',
@@ -23,7 +23,7 @@ const NavBar = () => {
     },
     {
       name: 'cupcake',
-      iconColor: '#eeaf3a'
+      iconColor: '#65c3c8'
     },
     {
       name: 'dracula',
