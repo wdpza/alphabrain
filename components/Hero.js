@@ -2,6 +2,8 @@ import { useRef, useState, useEffect } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '../tailwind.config.js'
 import { themeChange } from 'theme-change'
+import { FaBrain } from 'react-icons/fa'
+import { MdOutlineQrCode2 } from 'react-icons/md'
 
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useSpring, animated, easings } from 'react-spring'
@@ -23,7 +25,7 @@ function Box(props) {
     <mesh
       {...props}
       ref={mesh}
-      scale={active ? 1.5 : 1}
+      scale={active ? 1.2 : 1}
       onClick={(event) => setActive(!active)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}>
@@ -79,27 +81,22 @@ function EasingComponent() {
   )
 }
 
-export default function Hero({posts}) {
+export default function Hero() {
   return (
     <>
       <div className="z-10 hero-wrapper pb-20">
         <div className="container hero-content mx-auto flex-col">
           <EasingComponent />
-          <h1 className='text-6xl font-black mt-16 mb-12 antialiased'>
-            <span className='text-primary dark:text-dark-secondary-500 mt-10'>Alpha</span>Brain
+          <h1 className='text-5xl font-bold mt-16 mb-6 antialiased'>
+            <span className='text-primary dark:text-dark-secondary-500 mt-10'>i</span><span className=''>dentify</span>
           </h1>
 
-          <p className="text-2xl font-semibold mb-0s">
-          </p>
-
-          <span className='text-2xl font-normal mb-0s'>M</span>
-
-          <div className="flex flex-row justify-center items-center">
-            <div className="text-primary text-1xl p-3"><BsFillSquareFill /></div>
-            <div className="text-secondary text-1xl p-3"><BsFillSquareFill /></div>
-            <div className="text-accent text-1xl p-3"><BsFillSquareFill /></div>
-            <div className="text-neutral text-1xl p-3"><BsFillSquareFill /></div>
+          <div className="flex flex-row justify-center mb-5 items-center">
+            <div className="text-primary text-1xl p-3"><MdOutlineQrCode2 /></div>
+            <div className="text-secondary text-1xl p-3"><MdOutlineQrCode2 /></div>
+            <div className="text-accent text-1xl p-3"><MdOutlineQrCode2 /></div>
           </div>
+
         </div>
       </div>
     </>

@@ -7,12 +7,12 @@ class MyDocument extends Document {
     return (
       <Html lang='en' className='dark' data-theme="dracula">
         <Head />
-        <body className='bg-base-500 dark:bg-dark-base-600 overflow-x-hidden relative'>
+        <body className='bg-neutral overflow-x-hidden relative'>
           <div className="flex justify-center" style={{
             width: '100%',
           }}>
             <FaCircle
-              className="absolute text-base-300 top-0"
+              className="absolute text-base-100 top-0"
               style={{
                 marginTop: '-1888px',
                 width: '2080px',
